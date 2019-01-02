@@ -22,15 +22,12 @@ HEADERS  += recogdemo.h \
 
 FORMS    += recogdemo.ui
 
-INCLUDEPATH += /usr/local/cuda/include /usr/local/include /usr/local/tensorrt/include
+INCLUDEPATH += /usr/local/cuda/include /usr/local/include
 DEPENDPATH +=  /usr/local/cuda/lib64 /usr/local/lib /usr/local/tensorrt/lib
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build/lib -lcore
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build/lib
-else:unix: LIBS += -L/usr/local/cuda/lib64 -L/usr/local/lib -L/usr/local/tensorrt/lib -lnvinfer -lnvinfer_plugin -lnvcaffe_parser -lnvparsers -lcore -lboost_system -lboost_filesystem  -lopencv_freetype -lcuda -lcudart -lcublas -lcurand -fopenmp -lcudnn -lstdc++fs -ldl
-
-
-unix|win32: LIBS += `pkg-config --libs opencv`
+else:unix: LIBS += -L/usr/local/cuda/lib64 -L/usr/local/lib -L/usr/local/tensorrt/lib -lnvinfer -lnvinfer_plugin  -lnvparsers -lcore -lboost_system -lboost_filesystem -lopencv_core -lopencv_freetype -lopencv_imgproc -lopencv_imgcodecs -lcuda -lcudart -lcublas -lcurand -fopenmp -lcudnn -lstdc++fs -ldl
 
 
 RESOURCES +=
